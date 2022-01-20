@@ -5,7 +5,6 @@ import {
   View,
   Text,
   Alert,
-  RefreshControl,
 } from 'react-native';
 import {SearchBar} from 'react-native-elements';
 import {Icon} from 'react-native-elements/dist/icons/Icon';
@@ -41,6 +40,7 @@ const Home = ({route, navigation}) => {
     }
   };
 
+  // this will render cart items
   const renderCartItems = item => {
     return (
       <View style={styles.container}>
@@ -88,11 +88,13 @@ const Home = ({route, navigation}) => {
       setFilteredCartItems(items);
       setSearch(text);
     } else {
+      // if text is empty then we will replace filtered array with original array
       setFilteredCartItems(CartItems);
-      setSearch(text);
+      setSearch(text);// make search value empty
     }
   };
 
+  // when user press the delete item icon this alert will work.
   const deleteCartItem = selectedItem => {
     Alert.alert(
       'Delete ' + selectedItem.title,
@@ -111,6 +113,7 @@ const Home = ({route, navigation}) => {
     );
   };
 
+  // if user press yes that alert is popup then this method will delete seletcted item  from database
   const deleteItemFromDatabase = async selectedItem => {
     setRefreshing(true);
     try {
@@ -141,6 +144,7 @@ const Home = ({route, navigation}) => {
     } catch (error) {}
   };
 
+    // when user press the update item icon this alert will work.
   const updateCartItem = selectedItem => {
     Alert.alert(
       'Uptade ' + selectedItem.title,

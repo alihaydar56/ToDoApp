@@ -4,10 +4,11 @@ import TextInputComponent from '../../components/TextInputComponent';
 import ButtonComponent from '../../components/CButtonComponent';
 
 const UpdateCartScreen = ({route, navigation}) => {
-  const {selectedItem} = route.params;
-  const [title, setTitle] = useState(selectedItem.title.toString());
+  const {selectedItem} = route.params;// get item that want to to edit
+  const [title, setTitle] = useState(selectedItem.title.toString()); 
   const [desc, setDesc] = useState(selectedItem.description.toString());
 
+  // this will update the card with taken parameter from inputs and if updateded is successfull then it will navigate to home page
   const UpdateCart = async () => {
     try {
       await fetch(
@@ -33,6 +34,7 @@ const UpdateCartScreen = ({route, navigation}) => {
 
   return (
     <View style={{flex: 1}}>
+      {/* customTextInput for task title */}
       <TextInputComponent
         placeholder="title"
         value={title}
@@ -40,6 +42,7 @@ const UpdateCartScreen = ({route, navigation}) => {
           setTitle(value);
         }}
       />
+      {/* customTextInput for task description */}
       <TextInputComponent
         placeholder="description"
         value={desc}
@@ -48,6 +51,7 @@ const UpdateCartScreen = ({route, navigation}) => {
         }}
       />
 
+      {/* customButton for take action */}
       <ButtonComponent
         onPress={() => {
           UpdateCart();
@@ -59,6 +63,7 @@ const UpdateCartScreen = ({route, navigation}) => {
     </View>
   );
 };
+// styling for edit cart screen headers
 export const EditCartHeaderOption = ({route, navigation}) => {
   return {
     headerTitle: 'Edit cart',

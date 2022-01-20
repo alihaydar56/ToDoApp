@@ -29,6 +29,7 @@ const NewCartScreen = ({route, navigation}) => {
 
   return (
     <View style={{flex: 1}}>
+      {/* customTextInput for task title */}
       <TextInputComponent
         placeholder="title"
         value={title}
@@ -37,6 +38,7 @@ const NewCartScreen = ({route, navigation}) => {
         }}
         secure={false}
       />
+      {/* customTextInput for task title */}
       <TextInputComponent
         placeholder="description"
         value={desc}
@@ -46,6 +48,7 @@ const NewCartScreen = ({route, navigation}) => {
         secure={false}
       />
 
+      {/* customButton for take action */}
       <ButtonComponent
         onPress={() => {
           addCartToDatabase();
@@ -57,6 +60,7 @@ const NewCartScreen = ({route, navigation}) => {
     </View>
   );
 };
+// styling for new cart screen headers
 export const NewCartHeaderOption = ({route, navigation}) => {
   return {
     headerTitle: 'Create new cart',
